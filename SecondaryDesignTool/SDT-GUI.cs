@@ -54,7 +54,7 @@ namespace SecondaryDesignTool
         {
             try
             {
-                richTextBox1.Text = "";
+                richTextBox1.Items.Clear();
                 double wirediameter = double.Parse(txtGlobalWireDiameter.Text);
                 double coilDiameter = double.Parse(txtGlobalCoilDiameter.Text);
                 double filterFrequency = double.MaxValue;
@@ -83,7 +83,7 @@ namespace SecondaryDesignTool
                 }
                 for (int i = 0; i < outputCoils.Count; i++)
                 {
-                    richTextBox1.AppendText(outputCoils.ToArray<Coil>()[i].ToString() + Environment.NewLine);
+                    richTextBox1.Items.Add(outputCoils.ElementAt(i));
                 }
             }
             catch
@@ -98,8 +98,9 @@ namespace SecondaryDesignTool
         {
             try
             {
-                foreach(var coil in outputCoils)
+                foreach(Coil coil in richTextBox1.CheckedItems)
                 {
+
                     var filePath = @txtOutputFilePath.Text;
                     File.Copy(@"empty.java", filePath + "/" + coil.CoilLength.ToString("#.#") + "mm X " + coil.CoilDiameter.ToString() + "mm_" + coil.WireDiameter.ToString() + "mm.java");
                     string[] file = File.ReadAllLines(filePath + "/" + coil.CoilLength.ToString("#.#") + "mm X " + coil.CoilDiameter.ToString() + "mm_" + coil.WireDiameter.ToString() + "mm.java");
@@ -205,6 +206,14 @@ namespace SecondaryDesignTool
         {
             txtAppoxCoilDiameter.Text = (40 + trkAppoxCoilDiameter.Value * 10).ToString();
             txtGlobalCoilDiameter.Text = (40 + trkAppoxCoilDiameter.Value * 10).ToString();
+        }
+
+        private void btnFill_Click(object sender, EventArgs e)
+        {
+            string input = txtApproxOutput.Text;
+            input.Replace(" ", "");
+            string[] splitInput = input.Split('-');
+            txtGlobalWireDiameter.Text = ((double.Parse(splitInput[0]) + double.Parse(splitInput[1])) / 2).ToString().Replace(".", ",");
         }
     }
 }

@@ -8,3 +8,13 @@ C:\Users\onger\source\repos\SecondaryDesignTool\SecondaryDesignTool\obj\Debug\Se
 C:\Users\onger\source\repos\SecondaryDesignTool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.exe
 C:\Users\onger\source\repos\SecondaryDesignTool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.pdb
 C:\Users\onger\source\repos\SecondaryDesignTool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.SDT_GUI.resources
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\bin\Debug\SecondaryDesignTool.exe.config
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\bin\Debug\SecondaryDesignTool.exe
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\bin\Debug\SecondaryDesignTool.pdb
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.csprojAssemblyReference.cache
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.Properties.Resources.resources
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.SDT_GUI.resources
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.csproj.GenerateResource.cache
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.csproj.CoreCompileInputs.cache
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.exe
+C:\Users\onger\Source\Repos\secondary-design-tool\SecondaryDesignTool\obj\Debug\SecondaryDesignTool.pdb

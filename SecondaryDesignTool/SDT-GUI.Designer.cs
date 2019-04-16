@@ -47,7 +47,6 @@
             this.txtOutputFilePath = new System.Windows.Forms.TextBox();
             this.txtCount = new System.Windows.Forms.TextBox();
             this.btnJavaTC = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txtToggleSettings = new System.Windows.Forms.Button();
             this.txtFilterFrequency = new System.Windows.Forms.TextBox();
             this.txtUpAccIm = new System.Windows.Forms.TextBox();
@@ -67,6 +66,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.trkAppoxCoilDiameter = new System.Windows.Forms.TrackBar();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnFill = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkAppoxCoilDiameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +100,7 @@
             // 
             // txtApproxRatio
             // 
+            this.txtApproxRatio.BackColor = System.Drawing.SystemColors.Window;
             this.txtApproxRatio.Location = new System.Drawing.Point(15, 110);
             this.txtApproxRatio.Name = "txtApproxRatio";
             this.txtApproxRatio.ReadOnly = true;
@@ -119,6 +121,7 @@
             // 
             // txtApproxOutput
             // 
+            this.txtApproxOutput.BackColor = System.Drawing.SystemColors.Window;
             this.txtApproxOutput.Location = new System.Drawing.Point(15, 165);
             this.txtApproxOutput.Name = "txtApproxOutput";
             this.txtApproxOutput.ReadOnly = true;
@@ -218,6 +221,7 @@
             // 
             // txtCount
             // 
+            this.txtCount.BackColor = System.Drawing.SystemColors.Window;
             this.txtCount.Location = new System.Drawing.Point(358, 90);
             this.txtCount.Name = "txtCount";
             this.txtCount.ReadOnly = true;
@@ -234,16 +238,6 @@
             this.btnJavaTC.Text = "JavaTC3D";
             this.btnJavaTC.UseVisualStyleBackColor = true;
             this.btnJavaTC.Click += new System.EventHandler(this.btnJavaTC_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 202);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(484, 127);
-            this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "";
             // 
             // txtToggleSettings
             // 
@@ -436,6 +430,25 @@
             this.label16.TabIndex = 42;
             this.label16.Text = "<- cool";
             // 
+            // btnFill
+            // 
+            this.btnFill.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFill.Location = new System.Drawing.Point(158, 163);
+            this.btnFill.Name = "btnFill";
+            this.btnFill.Size = new System.Drawing.Size(29, 23);
+            this.btnFill.TabIndex = 43;
+            this.btnFill.Text = "Fill";
+            this.btnFill.UseVisualStyleBackColor = false;
+            this.btnFill.Click += new System.EventHandler(this.btnFill_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.FormattingEnabled = true;
+            this.richTextBox1.Location = new System.Drawing.Point(15, 202);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(484, 124);
+            this.richTextBox1.TabIndex = 44;
+            // 
             // SDT_GUI
             // 
             this.AcceptButton = this.btnGlobalCalc;
@@ -447,6 +460,8 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(884, 365);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.btnFill);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.trkAppoxCoilDiameter);
             this.Controls.Add(this.label15);
@@ -466,7 +481,6 @@
             this.Controls.Add(this.txtUpAccIm);
             this.Controls.Add(this.txtFilterFrequency);
             this.Controls.Add(this.txtToggleSettings);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnJavaTC);
             this.Controls.Add(this.txtCount);
             this.Controls.Add(this.txtOutputFilePath);
@@ -516,7 +530,6 @@
         private System.Windows.Forms.TextBox txtOutputFilePath;
         private System.Windows.Forms.TextBox txtCount;
         private System.Windows.Forms.Button btnJavaTC;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button txtToggleSettings;
         private System.Windows.Forms.TextBox txtFilterFrequency;
         private System.Windows.Forms.TextBox txtUpAccIm;
@@ -536,5 +549,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TrackBar trkAppoxCoilDiameter;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnFill;
+        private System.Windows.Forms.CheckedListBox richTextBox1;
     }
 }
