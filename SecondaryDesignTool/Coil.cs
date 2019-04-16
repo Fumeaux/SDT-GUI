@@ -39,6 +39,12 @@ namespace SecondaryDesignTool
         public double LoAccIm { get; set; }
         public double UpAccRa { get; set; }
         public double LoAccRa { get; set; }
-        public double ToLoFa { get; set; }
+        public double ToLoFa { get; set; } 
+        public double QuarterWaveLength => 299792458 / (4 * Frequency);
+        public double SkinDepth => Math.Sqrt((0.0000000179) / (Math.PI * (4 * Math.PI * Math.Pow(10, -7)))) * (1 / (Math.Sqrt((Frequency * 1000))));
+        public double DCResistance => (4 * (CoilDiameter / 1000) * Turns * (0.0179 * Math.Pow(10, -6))) / (Math.Pow((WireDiameter / 1000), 2));
+        public double SkinEffectFactor => ((SkinDepth * 1000) > (WireDiameter / 2) ? 1 : ((Math.Pow((WireDiameter / 1000), 2)) / (4 * (((WireDiameter / 1000) * SkinDepth) - (Math.Pow(SkinDepth, 2))))));
+        public double ACResistance => DCResistance * SkinEffectFactor * 3;
+        public double qUnloaded => (2 * Math.PI * (Frequency * 1000) * (Inductance / 1000000)) / ACResistance;
     }
 }

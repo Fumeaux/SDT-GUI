@@ -69,6 +69,15 @@
             this.btnFill = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.CheckedListBox();
             this.btnCheckAll = new System.Windows.Forms.Button();
+            this.btnCoilExplorer = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkAppoxCoilDiameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -461,6 +470,92 @@
             this.btnCheckAll.UseVisualStyleBackColor = true;
             this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
             // 
+            // btnCoilExplorer
+            // 
+            this.btnCoilExplorer.Location = new System.Drawing.Point(15, 361);
+            this.btnCoilExplorer.Name = "btnCoilExplorer";
+            this.btnCoilExplorer.Size = new System.Drawing.Size(75, 23);
+            this.btnCoilExplorer.TabIndex = 46;
+            this.btnCoilExplorer.Text = "Coil Explorer";
+            this.btnCoilExplorer.UseVisualStyleBackColor = true;
+            this.btnCoilExplorer.Click += new System.EventHandler(this.btnCoilExplorer_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(15, 391);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 47;
+            this.textBox1.Visible = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(141, 391);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 48;
+            this.textBox2.Visible = false;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(261, 391);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 49;
+            this.textBox3.Visible = false;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 414);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(64, 13);
+            this.label17.TabIndex = 50;
+            this.label17.Text = "Coildiameter";
+            this.label17.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(138, 414);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 13);
+            this.label18.TabIndex = 51;
+            this.label18.Text = "Coillength";
+            this.label18.Visible = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(258, 414);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 13);
+            this.label19.TabIndex = 52;
+            this.label19.Text = "Wirediameter";
+            this.label19.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(121, 394);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(14, 13);
+            this.label20.TabIndex = 53;
+            this.label20.Text = "X";
+            this.label20.Visible = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(15, 443);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(486, 160);
+            this.listBox1.TabIndex = 54;
+            this.listBox1.Visible = false;
+            // 
             // SDT_GUI
             // 
             this.AcceptButton = this.btnGlobalCalc;
@@ -471,7 +566,16 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(884, 365);
+            this.ClientSize = new System.Drawing.Size(884, 621);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnCoilExplorer);
             this.Controls.Add(this.btnCheckAll);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnFill);
@@ -513,7 +617,7 @@
             this.Controls.Add(this.txtAppoxCoilDiameter);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(900, 404);
+            this.MaximumSize = new System.Drawing.Size(900, 660);
             this.Name = "SDT_GUI";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Text = "SDT_GUI";
@@ -565,5 +669,14 @@
         private System.Windows.Forms.Button btnFill;
         private System.Windows.Forms.CheckedListBox richTextBox1;
         private System.Windows.Forms.Button btnCheckAll;
+        private System.Windows.Forms.Button btnCoilExplorer;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
