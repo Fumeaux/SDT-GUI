@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -62,7 +63,7 @@ namespace SecondaryDesignTool
                     double.TryParse(txtFilterFrequency.Text, out filterFrequency);
                 List<Coil> coils = new List<Coil>();
                 Coil tmpCoil;
-                for (double coilHeight = coilDiameter * 7; coilHeight > 0; coilHeight -= coilDiameter/13)
+                for (double coilHeight = coilDiameter * 7; coilHeight > 0; coilHeight -= coilDiameter/14)
                 {
                     tmpCoil = new Coil(coilDiameter, coilHeight, wirediameter);
                     tmpCoil.UpAccIm = double.Parse(txtUpAccIm.Text);
@@ -121,7 +122,13 @@ namespace SecondaryDesignTool
             }
             catch
             {
-                MessageBox.Show("Something I don't know went wrong", "Warning");
+                if (txtOutputFilePath.TextLength != 0)
+                    Process.Start("explorer.exe", txtOutputFilePath.Text);
+                else
+                {
+                    var path = @"C:\Users\" + Environment.UserName + @"\Documents\SDT\";
+                    Process.Start("explorer.exe", path);
+                }
             }
         }
 
@@ -178,6 +185,7 @@ namespace SecondaryDesignTool
 
         private void txtUpAccRa_TextChanged(object sender, EventArgs e)
         {
+            updateAll();
             try
             {
                 txtApproxRatio.Text = ((double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2).ToString("#.##");
@@ -191,6 +199,7 @@ namespace SecondaryDesignTool
 
         private void txtLoAccRa_TextChanged(object sender, EventArgs e)
         {
+            updateAll();
             try
             {
                 txtApproxRatio.Text = ((double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2).ToString("#.##");
@@ -310,7 +319,29 @@ namespace SecondaryDesignTool
 
         private void txtToLoFa_TextChanged(object sender, EventArgs e)
         {
+            updateAll();
+        }
+
+        public void updateAll()
+        {
             inputCoilExplorerChanged();
+            btnGlobalCalc.PerformClick();
+            btnApprox.PerformClick();
+        }
+
+        private void txtFilterFrequency_TextChanged(object sender, EventArgs e)
+        {
+            updateAll();
+        }
+
+        private void txtUpAccIm_TextChanged(object sender, EventArgs e)
+        {
+            updateAll();
+        }
+
+        private void txtLoAccIm_TextChanged(object sender, EventArgs e)
+        {
+            updateAll();
         }
     }
 }

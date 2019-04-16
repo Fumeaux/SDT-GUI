@@ -269,6 +269,7 @@
             this.txtFilterFrequency.TabIndex = 25;
             this.txtFilterFrequency.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtFilterFrequency.Visible = false;
+            this.txtFilterFrequency.TextChanged += new System.EventHandler(this.txtFilterFrequency_TextChanged);
             // 
             // txtUpAccIm
             // 
@@ -279,6 +280,7 @@
             this.txtUpAccIm.Text = "55000";
             this.txtUpAccIm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtUpAccIm.Visible = false;
+            this.txtUpAccIm.TextChanged += new System.EventHandler(this.txtUpAccIm_TextChanged);
             // 
             // txtLoAccIm
             // 
@@ -289,6 +291,7 @@
             this.txtLoAccIm.Text = "45000";
             this.txtLoAccIm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtLoAccIm.Visible = false;
+            this.txtLoAccIm.TextChanged += new System.EventHandler(this.txtLoAccIm_TextChanged);
             // 
             // txtUpAccRa
             // 
