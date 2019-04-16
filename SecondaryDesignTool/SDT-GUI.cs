@@ -215,5 +215,13 @@ namespace SecondaryDesignTool
             string[] splitInput = input.Split('-');
             txtGlobalWireDiameter.Text = ((double.Parse(splitInput[0]) + double.Parse(splitInput[1])) / 2).ToString().Replace(".", ",");
         }
+
+        private void btnCheckAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < richTextBox1.Items.Count; i++)
+            {
+                richTextBox1.SetItemChecked(i, true);
+            }
+        }
     }
 }

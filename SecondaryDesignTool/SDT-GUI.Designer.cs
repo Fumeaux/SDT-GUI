@@ -68,6 +68,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.btnFill = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.CheckedListBox();
+            this.btnCheckAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trkAppoxCoilDiameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -450,6 +451,16 @@
             this.richTextBox1.Size = new System.Drawing.Size(484, 124);
             this.richTextBox1.TabIndex = 44;
             // 
+            // btnCheckAll
+            // 
+            this.btnCheckAll.Location = new System.Drawing.Point(439, 173);
+            this.btnCheckAll.Name = "btnCheckAll";
+            this.btnCheckAll.Size = new System.Drawing.Size(60, 23);
+            this.btnCheckAll.TabIndex = 45;
+            this.btnCheckAll.Text = "Check All";
+            this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
+            // 
             // SDT_GUI
             // 
             this.AcceptButton = this.btnGlobalCalc;
@@ -461,6 +472,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(884, 365);
+            this.Controls.Add(this.btnCheckAll);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnFill);
             this.Controls.Add(this.label16);
@@ -552,5 +564,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnFill;
         private System.Windows.Forms.CheckedListBox richTextBox1;
+        private System.Windows.Forms.Button btnCheckAll;
     }
 }
