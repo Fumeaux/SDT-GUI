@@ -443,6 +443,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.CheckOnClick = true;
             this.richTextBox1.FormattingEnabled = true;
             this.richTextBox1.Location = new System.Drawing.Point(15, 202);
             this.richTextBox1.Name = "richTextBox1";
