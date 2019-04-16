@@ -330,6 +330,7 @@
             this.txtToLoFa.Text = "0,8";
             this.txtToLoFa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtToLoFa.Visible = false;
+            this.txtToLoFa.TextChanged += new System.EventHandler(this.txtToLoFa_TextChanged);
             // 
             // txtLoAccRa
             // 
@@ -552,7 +553,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(15, 443);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(486, 160);
+            this.listBox1.Size = new System.Drawing.Size(486, 238);
             this.listBox1.TabIndex = 54;
             this.listBox1.Visible = false;
             // 
@@ -566,7 +567,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(884, 621);
+            this.ClientSize = new System.Drawing.Size(884, 757);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
@@ -617,7 +618,7 @@
             this.Controls.Add(this.txtAppoxCoilDiameter);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(900, 660);
+            this.MaximumSize = new System.Drawing.Size(900, 900);
             this.Name = "SDT_GUI";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Text = "SDT_GUI";

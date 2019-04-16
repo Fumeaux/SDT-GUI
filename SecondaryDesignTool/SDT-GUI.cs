@@ -273,29 +273,41 @@ namespace SecondaryDesignTool
 
         private void inputCoilExplorerChanged()
         {
-            listBox1.Items.Clear();
-            if(textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0)
+            try
             {
-                explorerCoil = new Coil(double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text));
-                explorerCoil.ToLoFa = double.Parse(txtToLoFa.Text);
-                listBox1.Items.Add("Coil Diameter: " + explorerCoil.CoilDiameter + "mm");
-                listBox1.Items.Add("Coil Length: " + explorerCoil.CoilLength + "mm");
-                listBox1.Items.Add("Wire Diameter: " + explorerCoil.WireDiameter + "mm");
-                listBox1.Items.Add("Wire Spacing: " + explorerCoil.WireSpacing + "mm");
-                listBox1.Items.Add("Wire Length: " + explorerCoil.WireLength.ToString("#.#") + "mm");
-                listBox1.Items.Add("Turns: " + explorerCoil.Turns.ToString("#.#"));
-                listBox1.Items.Add("Inductance: " + explorerCoil.Inductance.ToString("#.#") + "uH");
-                listBox1.Items.Add("Toroid Major Diameter: " + explorerCoil.ToroidMajorDiameter.ToString("#.#") + "mm");
-                listBox1.Items.Add("Toroid Minor Diameter: " + explorerCoil.ToroidMinorDiameter.ToString("#.#") + "mm");
-                listBox1.Items.Add("Topload Capacity: " + explorerCoil.ToroidCapacity.ToString("#.#") + "pF");
-                listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz");
-                listBox1.Items.Add("Impedance: " + explorerCoil.Impedance.ToString("#.#") + "Ohm");
-                listBox1.Items.Add("DC Resistance: " + explorerCoil.DCResistance.ToString("#.#") + "mm");
-                listBox1.Items.Add("AC Resitance: " + explorerCoil.ACResistance.ToString("#.#") + "Ohm");
-                listBox1.Items.Add("Q unloaded: " + explorerCoil.qUnloaded.ToString("#.#"));
-                listBox1.Items.Add("Quarter Wave Length: " + (explorerCoil.QuarterWaveLength/1000).ToString("#.#") + "m");
-                //listBox1.Items.Add(": " + explorerCoil.);
+                listBox1.Items.Clear();
+                if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0)
+                {
+                    explorerCoil = new Coil(double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text));
+                    explorerCoil.ToLoFa = double.Parse(txtToLoFa.Text);
+                    listBox1.Items.Add("Coil Diameter: " + explorerCoil.CoilDiameter + "mm");
+                    listBox1.Items.Add("Coil Length: " + explorerCoil.CoilLength + "mm");
+                    listBox1.Items.Add("Wire Diameter: " + explorerCoil.WireDiameter + "mm");
+                    listBox1.Items.Add("Wire Spacing: " + explorerCoil.WireSpacing + "mm");
+                    listBox1.Items.Add("Wire Length: " + explorerCoil.WireLength.ToString("#.#") + "m");
+                    listBox1.Items.Add("Turns: " + explorerCoil.Turns.ToString("#.#"));
+                    listBox1.Items.Add("Inductance: " + explorerCoil.Inductance.ToString("#.#") + "uH");
+                    listBox1.Items.Add("Toroid Major Diameter: " + explorerCoil.ToroidMajorDiameter.ToString("#.#") + "mm");
+                    listBox1.Items.Add("Toroid Minor Diameter: " + explorerCoil.ToroidMinorDiameter.ToString("#.#") + "mm");
+                    listBox1.Items.Add("Topload Capacity: " + explorerCoil.ToroidCapacity.ToString("#.#") + "pF");
+                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz");
+                    listBox1.Items.Add("Impedance: " + explorerCoil.Impedance.ToString("#.#") + "Ohm");
+                    listBox1.Items.Add("DC Resistance: " + explorerCoil.DCResistance.ToString("#.#") + "mm");
+                    listBox1.Items.Add("AC Resitance: " + explorerCoil.ACResistance.ToString("#.#") + "Ohm");
+                    listBox1.Items.Add("Q unloaded: " + explorerCoil.qUnloaded.ToString("#.#"));
+                    listBox1.Items.Add("Quarter Wave Length: " + (explorerCoil.QuarterWaveLength / 1000).ToString("#.#") + "m");
+                    //listBox1.Items.Add(": " + explorerCoil.);
+                }
             }
+            catch
+            {
+
+            }
+        }
+
+        private void txtToLoFa_TextChanged(object sender, EventArgs e)
+        {
+            inputCoilExplorerChanged();
         }
     }
 }
