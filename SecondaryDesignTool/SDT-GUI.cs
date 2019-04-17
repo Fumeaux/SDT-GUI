@@ -23,16 +23,21 @@ namespace SecondaryDesignTool
         {
             try
             {
+                double ToploadCapacity = 0;
+                double.TryParse(txtToploadCap.Text, out ToploadCapacity);
                 List<Coil> coils = new List<Coil>();
                 Coil coil;
                 for(double wd = 0.1; wd < 1.5; wd += 0.01)
                 {
-                    coil = new Coil(int.Parse(txtAppoxCoilDiameter.Text), int.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd, double.Parse(txtEnamThick.Text));
-                    coil.UpAccIm = double.Parse(txtUpAccIm.Text);
-                    coil.LoAccIm = double.Parse(txtLoAccIm.Text);
-                    coil.UpAccRa = double.Parse(txtUpAccRa.Text);
-                    coil.LoAccRa = double.Parse(txtLoAccRa.Text);
-                    coil.ToLoFa = double.Parse(txtToLoFa.Text);
+                    coil = new Coil(int.Parse(txtAppoxCoilDiameter.Text), int.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd, double.Parse(txtEnamThick.Text))
+                    {
+                        UpAccIm = double.Parse(txtUpAccIm.Text),
+                        LoAccIm = double.Parse(txtLoAccIm.Text),
+                        UpAccRa = double.Parse(txtUpAccRa.Text),
+                        LoAccRa = double.Parse(txtLoAccRa.Text),
+                        ToLoFa = double.Parse(txtToLoFa.Text),
+                        ToroidCapacity = ToploadCapacity
+                    };
                     if (coil.isImpedanceSafe)
                         coils.Add(coil);
                 }
@@ -61,16 +66,21 @@ namespace SecondaryDesignTool
                 double filterFrequency = double.MaxValue;
                 if(txtFilterFrequency.TextLength != 0)
                     double.TryParse(txtFilterFrequency.Text, out filterFrequency);
+                double ToploadCapacity = 0;
+                double.TryParse(txtToploadCap.Text, out ToploadCapacity);
                 List<Coil> coils = new List<Coil>();
                 Coil tmpCoil;
                 for (double coilHeight = coilDiameter * 7; coilHeight > 0; coilHeight -= coilDiameter/14)
                 {
-                    tmpCoil = new Coil(coilDiameter, coilHeight, wirediameter, double.Parse(txtEnamThick.Text));
-                    tmpCoil.UpAccIm = double.Parse(txtUpAccIm.Text);
-                    tmpCoil.LoAccIm = double.Parse(txtLoAccIm.Text);
-                    tmpCoil.UpAccRa = double.Parse(txtUpAccRa.Text);
-                    tmpCoil.LoAccRa = double.Parse(txtLoAccRa.Text);
-                    tmpCoil.ToLoFa = double.Parse(txtToLoFa.Text);
+                    tmpCoil = new Coil(coilDiameter, coilHeight, wirediameter, double.Parse(txtEnamThick.Text))
+                    {
+                        UpAccIm = double.Parse(txtUpAccIm.Text),
+                        LoAccIm = double.Parse(txtLoAccIm.Text),
+                        UpAccRa = double.Parse(txtUpAccRa.Text),
+                        LoAccRa = double.Parse(txtLoAccRa.Text),
+                        ToLoFa = double.Parse(txtToLoFa.Text),
+                        ToroidCapacity = ToploadCapacity
+                    };
                     if (tmpCoil.isDoubleSafe && tmpCoil.Frequency <= filterFrequency)
                         coils.Add(tmpCoil);
                 }
@@ -148,7 +158,7 @@ namespace SecondaryDesignTool
                 txtUpAccIm.Visible = false;
                 txtLoAccIm.Visible = false;
                 txtUpAccRa.Visible = false;
-                textBox5.Visible = false;
+                txtToploadCap.Visible = false;
                 txtEnamThick.Visible = false;
                 txtToLoFa.Visible = false;
                 txtLoAccRa.Visible = false;
@@ -168,7 +178,7 @@ namespace SecondaryDesignTool
                 txtUpAccIm.Visible = true;
                 txtLoAccIm.Visible = true;
                 txtUpAccRa.Visible = true;
-                textBox5.Visible = true;
+                txtToploadCap.Visible = true;
                 txtEnamThick.Visible = true;
                 txtToLoFa.Visible = true;
                 txtLoAccRa.Visible = true;
@@ -289,8 +299,13 @@ namespace SecondaryDesignTool
                 listBox1.Items.Clear();
                 if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0)
                 {
-                    explorerCoil = new Coil(double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text), double.Parse(textBox4.Text));
-                    explorerCoil.ToLoFa = double.Parse(txtToLoFa.Text);
+                    double ToploadCapacity = 0;
+                    double.TryParse(txtToploadCap.Text, out ToploadCapacity);
+                    explorerCoil = new Coil(double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text), double.Parse(textBox4.Text))
+                    {
+                        ToroidCapacity = ToploadCapacity,
+                        ToLoFa = double.Parse(txtToLoFa.Text)
+                    };
                     listBox1.Items.Add("Coil Diameter: " + explorerCoil.CoilDiameter + "mm");
                     listBox1.Items.Add("Coil Length: " + explorerCoil.CoilLength + "mm");
                     listBox1.Items.Add("Ratio: " + explorerCoil.Ratio.ToString("#.#"));
@@ -303,7 +318,8 @@ namespace SecondaryDesignTool
                     listBox1.Items.Add("Toroid Minor Diameter: " + explorerCoil.ToroidMinorDiameter.ToString("#.#") + "mm");
                     listBox1.Items.Add("Topload Capacity: " + explorerCoil.ToroidCapacity.ToString("#.#") + "pF");
                     listBox1.Items.Add("");
-                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz");
+                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz (just the LC value, doesn't account for sparkloading)");
+                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz (just the LC value, doesn't account for sparkloading)");
                     listBox1.Items.Add("Impedance: " + explorerCoil.Impedance.ToString("#.#") + "Ohm");
                     listBox1.Items.Add("");
                     listBox1.Items.Add("DC Resistance: " + explorerCoil.DCResistance.ToString("#.#") + "Ohm");
@@ -355,6 +371,11 @@ namespace SecondaryDesignTool
         {
             updateAll();
             textBox4.Text = txtEnamThick.Text;
+        }
+
+        private void txtToploadCap_TextChanged(object sender, EventArgs e)
+        {
+            updateAll();
         }
     }
 }

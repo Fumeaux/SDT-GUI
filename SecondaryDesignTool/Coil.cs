@@ -37,7 +37,8 @@ namespace SecondaryDesignTool
         public double Inductance => (Math.Pow(Turns, 2) * Math.Pow(CoilDiameter / 50.8, 2) / ((CoilDiameter / 5.64444444444) + (CoilLength / 2.54)));
         public double ToroidMajorDiameter => CoilLength * ToLoFa;
         public double ToroidMinorDiameter => CoilDiameter * ToLoFa;
-        public double ToroidCapacity => 2.8*(1.2781-(ToroidMinorDiameter/ToroidMajorDiameter))*Math.Sqrt(((2*(Math.PI * Math.PI)*(ToroidMajorDiameter*0.0393701-ToroidMinorDiameter*0.0393701)*(ToroidMinorDiameter*0.0393701/2))/(4*Math.PI)));
+        private double _toroidCapacity = 0;
+        public double ToroidCapacity { get => _toroidCapacity == 0 ? 2.8 * (1.2781 - (ToroidMinorDiameter / ToroidMajorDiameter)) * Math.Sqrt(((2 * (Math.PI * Math.PI) * (ToroidMajorDiameter * 0.0393701 - ToroidMinorDiameter * 0.0393701) * (ToroidMinorDiameter * 0.0393701 / 2)) / (4 * Math.PI))) : _toroidCapacity; set => _toroidCapacity = value; }
         public double Frequency => (1 / (2 * Math.PI * Math.Sqrt((Inductance / 1000000) * (ToroidCapacity / 1000000000000)))) / 1000;
         public double Impedance => Math.Sqrt((Inductance / 1000000) / (ToroidCapacity / 1000000000000));
         public bool isDoubleSafe => Ratio <= UpAccRa && Ratio >= LoAccRa && Impedance <= UpAccIm && Impedance >= LoAccIm;

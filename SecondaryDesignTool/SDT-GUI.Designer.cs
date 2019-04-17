@@ -52,7 +52,7 @@
             this.txtUpAccIm = new System.Windows.Forms.TextBox();
             this.txtLoAccIm = new System.Windows.Forms.TextBox();
             this.txtUpAccRa = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtToploadCap = new System.Windows.Forms.TextBox();
             this.txtEnamThick = new System.Windows.Forms.TextBox();
             this.txtToLoFa = new System.Windows.Forms.TextBox();
             this.txtLoAccRa = new System.Windows.Forms.TextBox();
@@ -80,6 +80,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkAppoxCoilDiameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -306,15 +308,15 @@
             this.txtUpAccRa.Visible = false;
             this.txtUpAccRa.TextChanged += new System.EventHandler(this.txtUpAccRa_TextChanged);
             // 
-            // textBox5
+            // txtToploadCap
             // 
-            this.textBox5.Location = new System.Drawing.Point(547, 192);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(42, 20);
-            this.textBox5.TabIndex = 32;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox5.Visible = false;
+            this.txtToploadCap.Location = new System.Drawing.Point(547, 192);
+            this.txtToploadCap.Name = "txtToploadCap";
+            this.txtToploadCap.Size = new System.Drawing.Size(42, 20);
+            this.txtToploadCap.TabIndex = 32;
+            this.txtToploadCap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtToploadCap.Visible = false;
+            this.txtToploadCap.TextChanged += new System.EventHandler(this.txtToploadCap_TextChanged);
             // 
             // txtEnamThick
             // 
@@ -424,9 +426,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(595, 195);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.Size = new System.Drawing.Size(90, 13);
             this.label15.TabIndex = 40;
-            this.label15.Text = "other ideas?";
+            this.label15.Text = "Topload Capacity";
             this.label15.Visible = false;
             // 
             // trkAppoxCoilDiameter
@@ -583,6 +585,26 @@
             this.label21.Text = "Enamel Thickness";
             this.label21.Visible = false;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(595, 221);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 13);
+            this.label22.TabIndex = 58;
+            this.label22.Text = "other ideas?";
+            this.label22.Visible = false;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(547, 218);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(42, 20);
+            this.textBox6.TabIndex = 57;
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox6.Visible = false;
+            // 
             // SDT_GUI
             // 
             this.AcceptButton = this.btnGlobalCalc;
@@ -594,6 +616,8 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(884, 757);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.listBox1);
@@ -618,7 +642,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtToploadCap);
             this.Controls.Add(this.txtEnamThick);
             this.Controls.Add(this.txtToLoFa);
             this.Controls.Add(this.txtLoAccRa);
@@ -681,7 +705,7 @@
         private System.Windows.Forms.TextBox txtUpAccIm;
         private System.Windows.Forms.TextBox txtLoAccIm;
         private System.Windows.Forms.TextBox txtUpAccRa;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtToploadCap;
         private System.Windows.Forms.TextBox txtEnamThick;
         private System.Windows.Forms.TextBox txtToLoFa;
         private System.Windows.Forms.TextBox txtLoAccRa;
@@ -709,5 +733,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
