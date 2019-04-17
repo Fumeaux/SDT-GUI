@@ -13,6 +13,14 @@ namespace SecondaryDesignTool
             _width = width;
             _height = height;
             _wirediameter = wirediameter;
+            WireInsulation = wirediameter * 0.08833333333;
+        }
+        public Coil(double width, double height, double wirediameter, double wireinsulation)
+        {
+            _width = width;
+            _height = height;
+            _wirediameter = wirediameter;
+            WireInsulation = wireinsulation;
         }
         public override string ToString()
         {
@@ -23,8 +31,9 @@ namespace SecondaryDesignTool
         public double CoilLength => _height;
         public double WireDiameter => _wirediameter;
         public double WireLength => ((CoilDiameter * Math.PI * Turns) / 1000);
-        public double WireSpacing => WireDiameter / 10;
-        public double Turns => (CoilLength / (WireDiameter + WireSpacing));
+        public double WireSpacing => WireDiameter * 0.03; //assume 97% percent perfect
+        public double WireInsulation { get; }
+        public double Turns => (CoilLength / (WireDiameter + WireSpacing + 2 * WireInsulation));
         public double Inductance => (Math.Pow(Turns, 2) * Math.Pow(CoilDiameter / 50.8, 2) / ((CoilDiameter / 5.64444444444) + (CoilLength / 2.54)));
         public double ToroidMajorDiameter => CoilLength * ToLoFa;
         public double ToroidMinorDiameter => CoilDiameter * ToLoFa;

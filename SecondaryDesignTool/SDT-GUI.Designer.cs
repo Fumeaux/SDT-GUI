@@ -53,7 +53,7 @@
             this.txtLoAccIm = new System.Windows.Forms.TextBox();
             this.txtUpAccRa = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtEnamThick = new System.Windows.Forms.TextBox();
             this.txtToLoFa = new System.Windows.Forms.TextBox();
             this.txtLoAccRa = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -78,6 +78,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkAppoxCoilDiameter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -314,15 +316,16 @@
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox5.Visible = false;
             // 
-            // textBox6
+            // txtEnamThick
             // 
-            this.textBox6.Location = new System.Drawing.Point(547, 166);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(42, 20);
-            this.textBox6.TabIndex = 31;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox6.Visible = false;
+            this.txtEnamThick.Location = new System.Drawing.Point(547, 166);
+            this.txtEnamThick.Name = "txtEnamThick";
+            this.txtEnamThick.Size = new System.Drawing.Size(42, 20);
+            this.txtEnamThick.TabIndex = 31;
+            this.txtEnamThick.Text = "0,0265";
+            this.txtEnamThick.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtEnamThick.Visible = false;
+            this.txtEnamThick.TextChanged += new System.EventHandler(this.txtEnamThick_TextChanged);
             // 
             // txtToLoFa
             // 
@@ -411,9 +414,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(595, 169);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(107, 13);
+            this.label14.Size = new System.Drawing.Size(94, 13);
             this.label14.TabIndex = 39;
-            this.label14.Text = "?maximal coil length?";
+            this.label14.Text = "Enamel Thickness";
             this.label14.Visible = false;
             // 
             // label15
@@ -560,6 +563,26 @@
             this.listBox1.TabIndex = 54;
             this.listBox1.Visible = false;
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(367, 391);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 55;
+            this.textBox4.Text = "0,0265";
+            this.textBox4.Visible = false;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(364, 414);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(94, 13);
+            this.label21.TabIndex = 56;
+            this.label21.Text = "Enamel Thickness";
+            this.label21.Visible = false;
+            // 
             // SDT_GUI
             // 
             this.AcceptButton = this.btnGlobalCalc;
@@ -571,6 +594,8 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(884, 757);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
@@ -594,7 +619,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtEnamThick);
             this.Controls.Add(this.txtToLoFa);
             this.Controls.Add(this.txtLoAccRa);
             this.Controls.Add(this.txtUpAccRa);
@@ -657,7 +682,7 @@
         private System.Windows.Forms.TextBox txtLoAccIm;
         private System.Windows.Forms.TextBox txtUpAccRa;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtEnamThick;
         private System.Windows.Forms.TextBox txtToLoFa;
         private System.Windows.Forms.TextBox txtLoAccRa;
         private System.Windows.Forms.Label label8;
@@ -682,5 +707,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label21;
     }
 }

@@ -27,7 +27,7 @@ namespace SecondaryDesignTool
                 Coil coil;
                 for(double wd = 0.1; wd < 1.5; wd += 0.01)
                 {
-                    coil = new Coil(int.Parse(txtAppoxCoilDiameter.Text), int.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd);
+                    coil = new Coil(int.Parse(txtAppoxCoilDiameter.Text), int.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd, double.Parse(txtEnamThick.Text));
                     coil.UpAccIm = double.Parse(txtUpAccIm.Text);
                     coil.LoAccIm = double.Parse(txtLoAccIm.Text);
                     coil.UpAccRa = double.Parse(txtUpAccRa.Text);
@@ -65,7 +65,7 @@ namespace SecondaryDesignTool
                 Coil tmpCoil;
                 for (double coilHeight = coilDiameter * 7; coilHeight > 0; coilHeight -= coilDiameter/14)
                 {
-                    tmpCoil = new Coil(coilDiameter, coilHeight, wirediameter);
+                    tmpCoil = new Coil(coilDiameter, coilHeight, wirediameter, double.Parse(txtEnamThick.Text));
                     tmpCoil.UpAccIm = double.Parse(txtUpAccIm.Text);
                     tmpCoil.LoAccIm = double.Parse(txtLoAccIm.Text);
                     tmpCoil.UpAccRa = double.Parse(txtUpAccRa.Text);
@@ -149,7 +149,7 @@ namespace SecondaryDesignTool
                 txtLoAccIm.Visible = false;
                 txtUpAccRa.Visible = false;
                 textBox5.Visible = false;
-                textBox6.Visible = false;
+                txtEnamThick.Visible = false;
                 txtToLoFa.Visible = false;
                 txtLoAccRa.Visible = false;
                 label8.Visible = false;
@@ -169,7 +169,7 @@ namespace SecondaryDesignTool
                 txtLoAccIm.Visible = true;
                 txtUpAccRa.Visible = true;
                 textBox5.Visible = true;
-                textBox6.Visible = true;
+                txtEnamThick.Visible = true;
                 txtToLoFa.Visible = true;
                 txtLoAccRa.Visible = true;
                 label8.Visible = true;
@@ -243,6 +243,7 @@ namespace SecondaryDesignTool
                 textBox1.Visible = false;
                 textBox2.Visible = false;
                 textBox3.Visible = false;
+                textBox4.Visible = false;
                 listBox1.Visible = false;
                 label17.Visible = false;
                 label18.Visible = false;
@@ -255,6 +256,7 @@ namespace SecondaryDesignTool
                 textBox1.Visible = true;
                 textBox2.Visible = true;
                 textBox3.Visible = true;
+                textBox4.Visible = true;
                 listBox1.Visible = true;
                 label17.Visible = true;
                 label18.Visible = true;
@@ -287,7 +289,7 @@ namespace SecondaryDesignTool
                 listBox1.Items.Clear();
                 if (textBox1.TextLength != 0 && textBox2.TextLength != 0 && textBox3.TextLength != 0)
                 {
-                    explorerCoil = new Coil(double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text));
+                    explorerCoil = new Coil(double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text), double.Parse(textBox4.Text));
                     explorerCoil.ToLoFa = double.Parse(txtToLoFa.Text);
                     listBox1.Items.Add("Coil Diameter: " + explorerCoil.CoilDiameter + "mm");
                     listBox1.Items.Add("Coil Length: " + explorerCoil.CoilLength + "mm");
@@ -342,6 +344,17 @@ namespace SecondaryDesignTool
         private void txtLoAccIm_TextChanged(object sender, EventArgs e)
         {
             updateAll();
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            inputCoilExplorerChanged();
+        }
+
+        private void txtEnamThick_TextChanged(object sender, EventArgs e)
+        {
+            updateAll();
+            textBox4.Text = txtEnamThick.Text;
         }
     }
 }
