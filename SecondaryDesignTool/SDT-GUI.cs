@@ -27,7 +27,7 @@ namespace SecondaryDesignTool
                 double.TryParse(txtToploadCap.Text, out ToploadCapacity);
                 List<Coil> coils = new List<Coil>();
                 Coil coil;
-                for(double wd = 0.1; wd < 1.5; wd += 0.01)
+                for(double wd = 0.01; wd < 1.5; wd += 0.01)
                 {
                     coil = new Coil(int.Parse(txtAppoxCoilDiameter.Text), int.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd, double.Parse(txtEnamThick.Text))
                     {
@@ -41,7 +41,7 @@ namespace SecondaryDesignTool
                     if (coil.isImpedanceSafe)
                         coils.Add(coil);
                 }
-                txtApproxOutput.Text = coils.First().WireDiameter.ToString() + " - " + coils.Last().WireDiameter.ToString();
+                txtApproxOutput.Text = coils.First().WireDiameter.ToString("#.###") + " - " + coils.Last().WireDiameter.ToString("#.###");
                 if (coils.Count == 0)
                 {
                     txtApproxOutput.Text = "oops";
@@ -107,6 +107,74 @@ namespace SecondaryDesignTool
 
         private void btnGlobalExport_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(@"empty.java"))
+            {
+                using (StreamWriter sw = new StreamWriter(@"empty.java", true))
+                {
+                    //sw.WriteLine("units=1,ambient = 1,s_ws = 1,s_Al = 0,p_ws = 1,p_Al = 0,p_ribbon = 0,temp = 20,g_radius = 0,w_radius = 0,ceil_height = 0,s_radius1 = 0,s_radius2 = 0,s_height1 = 0,s_height2 = 0,s_turn = 0,s_wd = 0,p_radius1 = 0,p_radius2 = 0,p_height1 = 0,p_height2 = 0,p_turn = 0,p_wd = 0,p_vwidth = 0,p_rthick = 0,Cp_uF = 0,Lead_Length = 0,Lead_Diameter = 0,desired_k = 0,r_inner = 0,r_outer = 0,ringgroupminor = 0,ringN = 0,StartAngle = 90,EndAngle = 270,r_height = 0,RT = true,RG = false,t.inner = 10,t.outer = 30,t.height = 50,TT = true,TG = false,x_Vin = 0,x_Vout = 0,x_Iout = 0,x_Hz = 0,x_Vadjust = 0,x_ballast = 0,rsg_ELS = 0,rsg_ELR = 0,rsg_rpm = 0,rsg_disc_D = 0,rsg_ELR_D = 0,rsg_ELS_D = 0,stat_EL = 0,stat_EL_D = 0,stat_gap = 0,SPE = true,RGE = false");
+
+                    sw.WriteLine("units = 1,");
+                    sw.WriteLine("ambient = 1,");
+                    sw.WriteLine("s_ws = 1,");
+                    sw.WriteLine("s_Al = 0,");
+                    sw.WriteLine("p_ws = 1,");
+                    sw.WriteLine("p_Al = 0,");
+                    sw.WriteLine("p_ribbon = 0,");
+                    sw.WriteLine("temp = 20,");
+                    sw.WriteLine("g_radius = 0,");
+                    sw.WriteLine("w_radius = 0,");
+                    sw.WriteLine("ceil_height = 0,");
+                    sw.WriteLine("s_radius1 = 0,");
+                    sw.WriteLine("s_radius2 = 0,");
+                    sw.WriteLine("s_height1 = 0,");
+                    sw.WriteLine("s_height2 = 0,");
+                    sw.WriteLine("s_turn = 0,");
+                    sw.WriteLine("s_wd = 0,");
+                    sw.WriteLine("p_radius1 = 0,");
+                    sw.WriteLine("p_radius2 = 0,");
+                    sw.WriteLine("p_height1 = 0,");
+                    sw.WriteLine("p_height2 = 0,");
+                    sw.WriteLine("p_turn = 0,");
+                    sw.WriteLine("p_wd = 0,");
+                    sw.WriteLine("p_vwidth = 0,");
+                    sw.WriteLine("p_rthick = 0,");
+                    sw.WriteLine("Cp_uF = 0,");
+                    sw.WriteLine("Lead_Length = 0,");
+                    sw.WriteLine("Lead_Diameter = 0,");
+                    sw.WriteLine("desired_k = 0,");
+                    sw.WriteLine("r_inner = 0,");
+                    sw.WriteLine("r_outer = 0,");
+                    sw.WriteLine("ringgroupminor = 0,");
+                    sw.WriteLine("ringN = 0,");
+                    sw.WriteLine("StartAngle = 90,");
+                    sw.WriteLine("EndAngle = 270,");
+                    sw.WriteLine("r_height = 0,");
+                    sw.WriteLine("RT = true,");
+                    sw.WriteLine("RG = false,");
+                    sw.WriteLine("t.inner = 10,");
+                    sw.WriteLine("t.outer = 30,");
+                    sw.WriteLine("t.height = 50,");
+                    sw.WriteLine("TT = true,");
+                    sw.WriteLine("TG = false,");
+                    sw.WriteLine("x_Vin = 0,");
+                    sw.WriteLine("x_Vout = 0,");
+                    sw.WriteLine("x_Iout = 0,");
+                    sw.WriteLine("x_Hz = 0,");
+                    sw.WriteLine("x_Vadjust = 0,");
+                    sw.WriteLine("x_ballast = 0,");
+                    sw.WriteLine("rsg_ELS = 0,");
+                    sw.WriteLine("rsg_ELR = 0,");
+                    sw.WriteLine("rsg_rpm = 0,");
+                    sw.WriteLine("rsg_disc_D = 0,");
+                    sw.WriteLine("rsg_ELR_D = 0,");
+                    sw.WriteLine("rsg_ELS_D = 0,");
+                    sw.WriteLine("stat_EL = 0,");
+                    sw.WriteLine("stat_EL_D = 0,");
+                    sw.WriteLine("stat_gap = 0,");
+                    sw.WriteLine("SPE = true,");
+                    sw.WriteLine("RGE = false");
+                }
+            }
             try
             {
                 foreach(Coil coil in richTextBox1.CheckedItems)
@@ -223,8 +291,55 @@ namespace SecondaryDesignTool
 
         private void trkAppoxCoilDiameter_Scroll(object sender, EventArgs e)
         {
-            txtAppoxCoilDiameter.Text = (40 + trkAppoxCoilDiameter.Value * 10).ToString();
-            txtGlobalCoilDiameter.Text = (40 + trkAppoxCoilDiameter.Value * 10).ToString();
+            updateAll();
+            switch (trkAppoxCoilDiameter.Value)
+            {
+                case 0:
+                    txtAppoxCoilDiameter.Text = "30";
+                    txtGlobalCoilDiameter.Text = "30";
+                    break;
+                case 1:
+                    txtAppoxCoilDiameter.Text = "40";
+                    txtGlobalCoilDiameter.Text = "40";
+                    break;
+                case 2:
+                    txtAppoxCoilDiameter.Text = "50";
+                    txtGlobalCoilDiameter.Text = "50";
+                    break;
+                case 3:
+                    txtAppoxCoilDiameter.Text = "75";
+                    txtGlobalCoilDiameter.Text = "75";
+                    break;
+                case 4:
+                    txtAppoxCoilDiameter.Text = "100";
+                    txtGlobalCoilDiameter.Text = "100";
+                    break;
+                case 5:
+                    txtAppoxCoilDiameter.Text = "110";
+                    txtGlobalCoilDiameter.Text = "110";
+                    break;
+                case 6:
+                    txtAppoxCoilDiameter.Text = "160";
+                    txtGlobalCoilDiameter.Text = "160";
+                    break;
+                case 7:
+                    txtAppoxCoilDiameter.Text = "200";
+                    txtGlobalCoilDiameter.Text = "200";
+                    break;
+                case 8:
+                    txtAppoxCoilDiameter.Text = "250";
+                    txtGlobalCoilDiameter.Text = "250";
+                    break;
+                case 9:
+                    txtAppoxCoilDiameter.Text = "315";
+                    txtGlobalCoilDiameter.Text = "315";
+                    break;
+                case 10:
+                    txtAppoxCoilDiameter.Text = "400";
+                    txtGlobalCoilDiameter.Text = "400";
+                    break;
+            }
+            updateAll();
         }
 
         private void btnFill_Click(object sender, EventArgs e)
@@ -259,6 +374,7 @@ namespace SecondaryDesignTool
                 label18.Visible = false;
                 label19.Visible = false;
                 label20.Visible = false;
+                label21.Visible = false;
             }
             else
             {
@@ -272,6 +388,7 @@ namespace SecondaryDesignTool
                 label18.Visible = true;
                 label19.Visible = true;
                 label20.Visible = true;
+                label21.Visible = true;
             }
         }
 
@@ -318,9 +435,11 @@ namespace SecondaryDesignTool
                     listBox1.Items.Add("Toroid Minor Diameter: " + explorerCoil.ToroidMinorDiameter.ToString("#.#") + "mm");
                     listBox1.Items.Add("Topload Capacity: " + explorerCoil.ToroidCapacity.ToString("#.#") + "pF");
                     listBox1.Items.Add("");
-                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz (just the LC value, doesn't account for sparkloading)");
-                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz (just the LC value, doesn't account for sparkloading)");
+                    listBox1.Items.Add("Frequency: " + explorerCoil.Frequency.ToString("#.#") + "kHz");
+                    listBox1.Items.Add("real Frequency depends on the sparks loading the coil");
                     listBox1.Items.Add("Impedance: " + explorerCoil.Impedance.ToString("#.#") + "Ohm");
+                    listBox1.Items.Add("Reactance: " + explorerCoil.ReactanceAtResonance.ToString("#.#") + "Ohm");
+                    listBox1.Items.Add("Both use a different Formular");
                     listBox1.Items.Add("");
                     listBox1.Items.Add("DC Resistance: " + explorerCoil.DCResistance.ToString("#.#") + "Ohm");
                     listBox1.Items.Add("AC Resitance: " + explorerCoil.ACResistance.ToString("#.#") + "Ohm");

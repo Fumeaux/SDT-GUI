@@ -34,7 +34,9 @@ namespace SecondaryDesignTool
         public double WireSpacing => WireDiameter * 0.03; //assume 97% percent perfect
         public double WireInsulation { get; }
         public double Turns => (CoilLength / (WireDiameter + WireSpacing + 2 * WireInsulation));
+        //public double Inductance => (Math.Pow(Turns, 2) * Math.Pow(CoilDiameter/ 50.8, 2)) / ( CoilDiameter / 5.64444444444 + CoilLength / 2.54);
         public double Inductance => (Math.Pow(Turns, 2) * Math.Pow(CoilDiameter / 50.8, 2) / ((CoilDiameter / 5.64444444444) + (CoilLength / 2.54)));
+        public double ReactanceAtResonance => (1000 * 2 * Math.PI * Frequency * Inductance * 0.000001 * (1/(2 * Math.PI * Frequency * ToroidCapacity / 1000000000000))) / ((2 * Math.PI * Frequency * Inductance * 0.000001) + 1 / (2 * Math.PI * Frequency * ToroidCapacity / 1000000000000));
         public double ToroidMajorDiameter => CoilLength * ToLoFa;
         public double ToroidMinorDiameter => CoilDiameter * ToLoFa;
         private double _toroidCapacity = 0;
@@ -42,7 +44,7 @@ namespace SecondaryDesignTool
         public double Frequency => (1 / (2 * Math.PI * Math.Sqrt((Inductance / 1000000) * (ToroidCapacity / 1000000000000)))) / 1000;
         public double Impedance => Math.Sqrt((Inductance / 1000000) / (ToroidCapacity / 1000000000000));
         public bool isDoubleSafe => Ratio <= UpAccRa && Ratio >= LoAccRa && Impedance <= UpAccIm && Impedance >= LoAccIm;
-        public bool isImpedanceSafe => Impedance <= middleIm + radiusIm * 0.4 && Impedance >= middleIm - radiusIm * 0.4;
+        public bool isImpedanceSafe => Impedance <= middleIm + radiusIm * 0.6 && Impedance >= middleIm - radiusIm * 0.6;
         private double middleIm => (UpAccIm + LoAccIm) / 2;
         private double radiusIm => LoAccIm < middleIm ? middleIm - LoAccIm: LoAccIm - middleIm;
         public double UpAccIm { get; set; }
