@@ -21,6 +21,7 @@ namespace SecondaryDesignTool
 
         private void btnApprox_Click(object sender, EventArgs e)
         {
+            ParseAll();
             try
             {
                 double ToploadCapacity = 0;
@@ -29,7 +30,7 @@ namespace SecondaryDesignTool
                 Coil coil;
                 for(double wd = 0.01; wd < 1.5; wd += 0.01)
                 {
-                    coil = new Coil(int.Parse(txtAppoxCoilDiameter.Text), int.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd, double.Parse(txtEnamThick.Text))
+                    coil = new Coil(double.Parse(txtAppoxCoilDiameter.Text), double.Parse(txtAppoxCoilDiameter.Text) * (double.Parse(txtLoAccRa.Text) + double.Parse(txtUpAccRa.Text)) / 2, wd, double.Parse(txtEnamThick.Text))
                     {
                         UpAccIm = double.Parse(txtUpAccIm.Text),
                         LoAccIm = double.Parse(txtLoAccIm.Text),
@@ -58,6 +59,7 @@ namespace SecondaryDesignTool
 
         private void btnGlobalCalc_Click(object sender, EventArgs e)
         {
+            ParseAll();
             try
             {
                 richTextBox1.Items.Clear();
@@ -395,22 +397,26 @@ namespace SecondaryDesignTool
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             inputCoilExplorerChanged();
+            textBox1.Select(textBox1.Text.Length, 0);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             inputCoilExplorerChanged();
+            textBox2.Select(textBox2.Text.Length, 0);
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             inputCoilExplorerChanged();
+            textBox3.Select(textBox3.Text.Length, 0);
         }
 
         private Coil explorerCoil;
 
         private void inputCoilExplorerChanged()
         {
+            ParseAll();
             try
             {
                 listBox1.Items.Clear();
@@ -461,6 +467,7 @@ namespace SecondaryDesignTool
 
         public void updateAll()
         {
+            ParseAll();
             inputCoilExplorerChanged();
             btnGlobalCalc.PerformClick();
             btnApprox.PerformClick();
@@ -484,6 +491,7 @@ namespace SecondaryDesignTool
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             inputCoilExplorerChanged();
+            textBox4.Select(textBox4.Text.Length, 0);
         }
 
         private void txtEnamThick_TextChanged(object sender, EventArgs e)
@@ -495,6 +503,25 @@ namespace SecondaryDesignTool
         private void txtToploadCap_TextChanged(object sender, EventArgs e)
         {
             updateAll();
+        }
+
+        private void ParseAll()
+        {
+            txtAppoxCoilDiameter.Text = txtAppoxCoilDiameter.Text.Replace('.', ',');
+            txtGlobalCoilDiameter.Text = txtGlobalCoilDiameter.Text.Replace('.', ',');
+            txtGlobalWireDiameter.Text = txtGlobalWireDiameter.Text.Replace('.', ',');
+            textBox1.Text = textBox1.Text.Replace('.', ',');
+            textBox2.Text = textBox2.Text.Replace('.', ',');
+            textBox3.Text = textBox3.Text.Replace('.', ',');
+            textBox4.Text = textBox4.Text.Replace('.', ',');
+            txtFilterFrequency.Text = txtFilterFrequency.Text.Replace('.', ',');
+            txtUpAccIm.Text = txtUpAccIm.Text.Replace('.', ',');
+            txtLoAccIm.Text = txtLoAccIm.Text.Replace('.', ',');
+            txtUpAccRa.Text = txtUpAccRa.Text.Replace('.', ',');
+            txtLoAccRa.Text = txtLoAccRa.Text.Replace('.', ',');
+            txtToLoFa.Text = txtToLoFa.Text.Replace('.', ',');
+            txtEnamThick.Text = txtEnamThick.Text.Replace('.', ',');
+            txtToploadCap.Text = txtToploadCap.Text.Replace('.', ',');
         }
     }
 }
