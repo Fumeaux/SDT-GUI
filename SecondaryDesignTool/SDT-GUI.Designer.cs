@@ -608,6 +608,7 @@
             this.textBox6.TabIndex = 57;
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox6.Visible = false;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // SDT_GUI
             // 

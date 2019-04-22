@@ -265,6 +265,7 @@ namespace SecondaryDesignTool
 
         private void txtUpAccRa_TextChanged(object sender, EventArgs e)
         {
+            txtUpAccRa.Select(txtUpAccRa.Text.Length, 0);
             updateAll();
             try
             {
@@ -279,6 +280,7 @@ namespace SecondaryDesignTool
 
         private void txtLoAccRa_TextChanged(object sender, EventArgs e)
         {
+            txtLoAccRa.Select(txtLoAccRa.Text.Length, 0);
             updateAll();
             try
             {
@@ -462,6 +464,7 @@ namespace SecondaryDesignTool
 
         private void txtToLoFa_TextChanged(object sender, EventArgs e)
         {
+            txtToLoFa.Select(txtToLoFa.Text.Length, 0);
             updateAll();
         }
 
@@ -475,16 +478,19 @@ namespace SecondaryDesignTool
 
         private void txtFilterFrequency_TextChanged(object sender, EventArgs e)
         {
+            txtFilterFrequency.Select(txtFilterFrequency.Text.Length, 0);
             updateAll();
         }
 
         private void txtUpAccIm_TextChanged(object sender, EventArgs e)
         {
+            txtUpAccIm.Select(txtUpAccIm.Text.Length, 0);
             updateAll();
         }
 
         private void txtLoAccIm_TextChanged(object sender, EventArgs e)
         {
+            txtLoAccIm.Select(txtLoAccIm.Text.Length, 0);
             updateAll();
         }
 
@@ -496,12 +502,14 @@ namespace SecondaryDesignTool
 
         private void txtEnamThick_TextChanged(object sender, EventArgs e)
         {
+            txtEnamThick.Select(txtEnamThick.Text.Length, 0);
             updateAll();
             textBox4.Text = txtEnamThick.Text;
         }
 
         private void txtToploadCap_TextChanged(object sender, EventArgs e)
         {
+            txtToploadCap.Select(txtToploadCap.Text.Length, 0);
             updateAll();
         }
 
@@ -522,6 +530,11 @@ namespace SecondaryDesignTool
             txtToLoFa.Text = txtToLoFa.Text.Replace('.', ',');
             txtEnamThick.Text = txtEnamThick.Text.Replace('.', ',');
             txtToploadCap.Text = txtToploadCap.Text.Replace('.', ',');
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            updateAll();
         }
     }
 }
